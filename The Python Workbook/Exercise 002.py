@@ -1,4 +1,3 @@
-#Exercise 2
 name = input("""What is your name? 
 """)
 print(f"Hello, {name}, what's up?")
