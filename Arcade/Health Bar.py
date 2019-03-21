@@ -4,12 +4,11 @@ import arcade
 WIDTH = 640
 HEIGHT = 480
 
-x = 200
-y = 200
-
-max_health = 100
-bar_width = 200
 player_health = 100
+max_health = 350
+bar_width = 200
+bar_height = 50
+
 
 def update(delta_time):
     pass
@@ -20,17 +19,18 @@ def update(delta_time):
 def on_draw():
     arcade.start_render()
 
-    global max_health
-    global bar_width
     global player_health
-    global x
-    global y
 
     # DRAW IN HERE
 
+    arcade.draw_xywh_rectangle_filled(WIDTH/2 - bar_width/2, HEIGHT/2 - bar_height/2, bar_width, 50, arcade.color.BLACK)
 
-    arcade.draw_xywh_rectangle_filled(x, y, bar_width, 50, arcade.color.BLACK)
-    arcade.draw_xywh_rectangle_filled(x, y, player_health, 50, arcade.color.GREEN)
+
+    health_width = player_health / max_health * bar_width
+    arcade.draw_xywh_rectangle_filled(WIDTH/2 - bar_width/2, HEIGHT/2 - bar_height/2, health_width, 50, arcade.color.GREEN)
+
+    arcade.draw_text(f"{player_health} / {max_health}", WIDTH/2 - bar_width/2, HEIGHT/2 - bar_height/2, arcade.color.WHITE, font_size=30)
+
 
 
 
